@@ -13,17 +13,17 @@ float area(Circle* x, int nr)
 
 	_asm {
 		mov ebx, 0
-		cvtsi2ss xmm0, ebx  /// xmm0 = 0 initializam cea mai mare arie
+		cvtsi2ss xmm0, ebx					 /// xmm0 = 0 initializam cea mai mare arie
 
-		mov ebx, [ebp+8]	/// ebx = adresa vectorului x
-		mov esi, 0			/// esi = 0 = contor
+		mov ebx, [ebp+8]					/// ebx = adresa vectorului x
+		mov esi, 0							/// esi = 0 = contor
 
 		_bucla:
-			cmp esi, [ebp + 12]	/// esi < nr
+			cmp esi, [ebp + 12]				/// esi < nr
 			jge _final
 
 			mov eax, [ebx + esi * 8 + 4]	/// eax = x[contor]
-			///mov eax, [eax + 4]				/// eax = radius (aici e +8 sau +4) ?
+											
 			mul eax							/// eax = eax * eax = r^2
 
 			fldpi							/// ST(0) = pi
